@@ -3,11 +3,18 @@
 ESCLUSTER=${ESCLUSTER:-http://localhost:9200}
 
 clear; while true ; do 
-tput cup 0 0 ;date
+
+tput cup 0 0 ;
+echo "`date`:"
+
+tput cup 0 30
+echo "...Querying..."
 
 curl -s $ESCLUSTER/_cat/shards|
   awk '{print $NF}' |sort |uniq -c
 
-tput ed
+tput ed  #clear to end of screen
+tput cup 0 30; tput el;  tput cup 0 0
+
 sleep 15 
 done
