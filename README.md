@@ -9,6 +9,7 @@ Otherwise, will default to http://localhost:9200
 
 * esgethealth - Overall health of cluster
 * esgetsettings - Dump ALL the cluster settings to stdout
+* esgettemplates - Get templated values for indexes
 * esmoveshard - Usually a component in a script, to move multiple shards at a time
 * esmoveshards - Move a fixed number of shards off one node to another node
 * esnodeshards - List count of shards per node
