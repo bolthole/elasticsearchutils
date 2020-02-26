@@ -6,6 +6,8 @@ clear
 while true; do
 
 tput cup 0 0
-curl $ESCLUSTER/_cluster/health?pretty; sleep 60
+curl $ESCLUSTER/_cluster/health?pretty
+tput ed
+sleep 60
 
 done
