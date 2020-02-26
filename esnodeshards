@@ -2,9 +2,12 @@
 
 ESCLUSTER=${ESCLUSTER:-http://localhost:9200}
 
-clear; while true ; do tput cup 0 0 ;date
+clear; while true ; do 
+tput cup 0 0 ;date
 
 curl -s $ESCLUSTER/_cat/shards|
   awk '{print $NF}' |sort |uniq -c
 
-sleep 15 ; done
+tput ed
+sleep 15 
+done
