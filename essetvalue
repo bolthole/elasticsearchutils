@@ -1,4 +1,4 @@
-#!/bin/sh
+Fixup #!/bin/sh
 
 # set a TRANSIENT setting
 
@@ -19,26 +19,25 @@ curl -XPUT $ESCLUSTER/_cluster/settings -d '
 
 # Some samples:
 
-# ssetvalue.sh cluster.routing.allocation.enable all
-# ssetvalue.sh cluster.routing.allocation.enable primaries
-# ssetvalue.sh cluster.routing.allocation.enable new_primaries
-# ssetvalue.sh cluster.routing.allocation.enable none
+# essetvalue cluster.routing.allocation.enable all
+# essetvalue cluster.routing.allocation.enable primaries
+# essetvalue cluster.routing.allocation.enable new_primaries
+# essetvalue cluster.routing.allocation.enable none
 
-# ssetvalue.sh cluster.routing.allocation.exclude._ip  "x.x.x.x,x.x.x.2"
+# essetvalue cluster.routing.allocation.exclude._ip  "x.x.x.x,x.x.x.2"
 
-# ssetvalue.sh cluster.routing.allocation.exclude._ip  ""
+# essetvalue cluster.routing.allocation.exclude._ip  ""
 
 
 #    "What types of shards can I rebalance?"
-# ssetvalue.sh cluster.routing.rebalance.enable all
-# ssetvalue.sh cluster.routing.rebalance.enable none
+# essetvalue cluster.routing.rebalance.enable all
+# essetvalue cluster.routing.rebalance.enable none
 
 #    "WHEN can i rebalance them?"
-# ssetvalue.sh cluster.routing.allocation.allow_rebalance always
-# ssetvalue.sh cluster.routing.allocation.allow_rebalance indices_primaries_acti
-e
-# ssetvalue.sh cluster.routing.allocation.allow_rebalance indices_all_active
+# essetvalue cluster.routing.allocation.allow_rebalance always
+# essetvalue cluster.routing.allocation.allow_rebalance indices_primaries_active
+# ssetvalue cluster.routing.allocation.allow_rebalance indices_all_active
 
-# ssetvalue.sh cluster.routing.rebalance.enable all
-# ssetvalue.sh cluster.routing.rebalance.enable primaries
-# ssetvalue.sh cluster.routing.rebalance.enable none
+# essetvalue cluster.routing.rebalance.enable all
+# essetvalue cluster.routing.rebalance.enable primaries
+# essetvalue cluster.routing.rebalance.enable none
