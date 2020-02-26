@@ -1,0 +1,44 @@
+#!/bin/sh
+
+# set a TRANSIENT setting
+
+if [ $# -lt 2 ] ; then
+        echo give a setting name, and a value. eg:
+        echo $0 cluster.routing.rebalance.enable all
+        exit 1
+fi
+ESCLUSTER=${ESCLUSTER:-http://localhost:9200}
+
+curl -XPUT $ESCLUSTER/_cluster/settings -d '
+{
+  "transient": {
+  "'$1'": "'$2'"
+  }
+}'
+
+
+# Some samples:
+
+# ssetvalue.sh cluster.routing.allocation.enable all
+# ssetvalue.sh cluster.routing.allocation.enable primaries
+# ssetvalue.sh cluster.routing.allocation.enable new_primaries
+# ssetvalue.sh cluster.routing.allocation.enable none
+
+# ssetvalue.sh cluster.routing.allocation.exclude._ip  "x.x.x.x,x.x.x.2"
+
+# ssetvalue.sh cluster.routing.allocation.exclude._ip  ""
+
+
+#    "What types of shards can I rebalance?"
+# ssetvalue.sh cluster.routing.rebalance.enable all
+# ssetvalue.sh cluster.routing.rebalance.enable none
+
+#    "WHEN can i rebalance them?"
+# ssetvalue.sh cluster.routing.allocation.allow_rebalance always
+# ssetvalue.sh cluster.routing.allocation.allow_rebalance indices_primaries_acti
+e
+# ssetvalue.sh cluster.routing.allocation.allow_rebalance indices_all_active
+
+# ssetvalue.sh cluster.routing.rebalance.enable all
+# ssetvalue.sh cluster.routing.rebalance.enable primaries
+# ssetvalue.sh cluster.routing.rebalance.enable none

@@ -1,0 +1,25 @@
+#!/bin/sh
+
+ESCLUSTER=${ESCLUSTER:-http://localhost:9200}
+
+
+# index="$1" shard="$2" from="$3" to="$4"
+
+if [ $# -lt 4 ] ; then
+        echo "need index, shard, from, and to node"
+        exit 1
+fi
+
+# setting metric, is to reduce output on completion.
+
+curl -XPOST $ESCLUSTER/_cluster/reroute?metric=version -d '
+{
+  "commands": [{
+    "move" : {
+      "index": "'$1'",
+      "shard": '$2',
+      "from_node": "'$3'",
+      "to_node": "'$4'"
+    }
+  }]
+}'

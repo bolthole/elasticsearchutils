@@ -1,0 +1,13 @@
+#!/bin/sh
+
+ESCLUSTER=${ESCLUSTER:-http://localhost:9200}
+
+curl -s $ESCLUSTER/_cluster/settings'?include_defaults=true&pretty'
+
+
+# look for things like
+# cluster.routing.allocation.allow_rebalance
+
+# Note that this output DOES NOT INCLUDE templates for new indexes
+# So, you have to view the "shard count" a different way.
+# See also  esgettemplates

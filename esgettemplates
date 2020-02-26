@@ -1,0 +1,9 @@
+#!/bin/sh
+
+ESCLUSTER=${ESCLUSTER:-http://localhost:9200}
+
+curl $ESCLUSTER/_template?pretty
+
+
+# see also
+# esgetsettings

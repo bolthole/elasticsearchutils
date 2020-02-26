@@ -1,0 +1,11 @@
+#!/bin/sh
+
+ESCLUSTER=${ESCLUSTER:-http://localhost:9200}
+
+clear
+while true; do
+
+tput cup 0 0
+curl $ESCLUSTER/_cluster/health?pretty; sleep 60
+
+done
