@@ -1,0 +1,20 @@
+#!/bin/sh
+
+
+# moveshards from-node to-node (optional shard count)
+
+ESCLUSTER=${ESCLUSTER:-http://localhost:9200}
+
+if [ "$3" != "" ] ; then  shardcount=$3 else shardcount=8;  fi
+
+node1="$1"
+node2="$2"
+
+echo moving shards from $node1 to $node2
+
+curl -s $ESCLUSTER/_cat/shards | egrep 'STARTED.*$node1' |
+  head -$shardcount | awk '{print $1,$2}'  |
+  while read stuff ; do eval esmoveshard.sh $stuff $node1 $node2 ; done
+
+echo ""
+

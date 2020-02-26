@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# convenience wrapper around  essetvalue to toggle allowing shard allocation for the cluster
+
+
+usage(){
+        echo $0: 'state "all" or "none"'
+        exit 1
+
+}
+if [ $# -lt 1 ] ; then
+        usage
+fi
+
+case $1 in
+        all|none)
+                essetvalue cluster.routing.allocation.enable $1
+        ;;
+        *)
+        usage
+        ;;
+esac
+
