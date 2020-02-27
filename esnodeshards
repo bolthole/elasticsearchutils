@@ -26,10 +26,9 @@ else
     tput cup 0 0 
     echo "HOSTNAME              NORM  INIT RELOC"
     awk '
-        $4=="STARTED"      {  hostnames[$8]="1"; started[$8]+=1;      }
+        $4=="STARTED"      {  hostnames[$NF]="1"; started[$NF]+=1;    }
+        $4=="RELOCATING"   {  hostnames[$NF]="1"; relocating[$NF]+=1; }
         $4=="INITIALIZING" {  hostnames[$6]="1"; initializing[$6]+=1; }
-        $4 == "RELOCATING" {  hostnames[$8]="1"; relocating[$8]+=1;   }
-          #field 12 gives the reloc destination host
     
         $4 == "UNASSIGNED" {  unassigned+=1; }
         END {
