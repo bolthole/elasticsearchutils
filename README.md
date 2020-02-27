@@ -18,7 +18,7 @@ Otherwise, will default to http://localhost:9200
 
 
 Sample output from esnodeshards -v:
-
+<pre>
 >   ...Querying...     NORM  INIT RELOC
 >       sysdata01-cor  1038            
 >       sysdata02-cor  1228           3|
@@ -29,3 +29,4 @@ Sample output from esnodeshards -v:
 >       sysdata07-cor  1035           1
 >       sysdata08-cor  1220           7
 >  -- UNASSIGNED == 0
+</pre>
