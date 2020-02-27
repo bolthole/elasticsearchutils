@@ -33,4 +33,4 @@ Sample output from esnodeshards -v:
        sysdata11-cor     8            
        sysdata12-cor  1198            
        sysdata13-cor  1036            
--- UNASSIGNED == 0
+  -- UNASSIGNED == 0
