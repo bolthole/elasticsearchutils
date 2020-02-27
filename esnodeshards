@@ -7,16 +7,20 @@ if [ "$1" == "-v" ] ; then
     verbose="yes"
 fi
 
-clear; while true ; do 
+clear
 
-tput cup 0 0 ;
-echo "...Querying..."
+while true ; do 
 
-if [ "$verbose" != "yes" ] ; then 
+tput cup 0 0
+
+if [ "$verbose" != "yes" ] ; then
+        echo "(Wait for updates...)"
 	curl -s $ESCLUSTER/_cat/shards|
 	  awk '{print $NF}' |sort |uniq -c |
 	      awk '{print $2, $1}'
+
 else
+    echo "...Querying..."
     curl -s $ESCLUSTER/_cat/shards >$TMPFILE
     
     tput cup 0 0 
