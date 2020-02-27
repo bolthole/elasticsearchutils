@@ -21,7 +21,7 @@ Sample output from esnodeshards -v:
 <pre>
 >   ...Querying...     NORM  INIT RELOC
 >       sysdata01-cor  1038            
->       sysdata02-cor  1228           3|
+>       sysdata02-cor  1228           3
 >       sysdata03-cor  1038            
 >       sysdata04-cor  1188     2     
 >       sysdata05-cor  1036            
