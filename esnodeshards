@@ -1,20 +1,47 @@
 #!/bin/sh
 
+TMPFILE=${TMPFILE:-/tmp/esnodestats}
 ESCLUSTER=${ESCLUSTER:-http://localhost:9200}
+
+if [ "$1" == "-v" ] ; then
+    verbose="yes"
+fi
 
 clear; while true ; do 
 
 tput cup 0 0 ;
-echo "`date`:"
-
-tput cup 0 30
 echo "...Querying..."
 
-curl -s $ESCLUSTER/_cat/shards|
-  awk '{print $NF}' |sort |uniq -c
+if [ "$verbose" != "yes" ] ; then 
+	curl -s $ESCLUSTER/_cat/shards|
+	  awk '{print $NF}' |sort |uniq -c |
+	      awk '{print $2, $1}'
+else
+    curl -s $ESCLUSTER/_cat/shards >$TMPFILE
+    
+    tput cup 0 0 
+    echo "HOSTNAME              NORM  INIT RELOC"
+    awk '
+        $4=="STARTED"      {  hostnames[$8]="1"; started[$8]+=1;      }
+        $4=="INITIALIZING" {  hostnames[$6]="1"; initializing[$6]+=1; }
+        $4 == "RELOCATING" {  hostnames[$8]="1"; relocating[$8]+=1;   }
+          #field 12 gives the reloc destination host
+    
+        $4 == "UNASSIGNED" {  unassigned+=1; }
+        END {
+            for (h in hostnames){
+                printf("%20s %5s %5s %5s\n", h, started[h], initializing[h], relocating[h]);
+            }
+            printf("-- UNASSIGNED == %d\n", unassigned);
+        }
+    
+    ' $TMPFILE |sort
+    
+    rm $TMPFILE
+
+fi
 
 tput ed  #clear to end of screen
-tput cup 0 30; tput el;  tput cup 0 0
 
 sleep 15 
 done

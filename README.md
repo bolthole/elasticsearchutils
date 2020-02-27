@@ -12,6 +12,6 @@ Otherwise, will default to http://localhost:9200
 * esgettemplates - Get templated values for indexes
 * esmoveshard - Move ONE shard from one node to another. Mostly just a component of esmoveshards.
 * esmoveshards - Move a fixed number of shards off one node to another node
-* esnodeshards - Display count of shards per node
+* esnodeshards - Display per-node shards info. Use -v for details
 * essetvalue - More easily set things like cluster.routing.allocation.exclude._ip 
 * essetshardallocation - Convenience toggle for clusterside cluster.routing.allocation.enable value
