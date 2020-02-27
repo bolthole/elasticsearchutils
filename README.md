@@ -19,7 +19,7 @@ Otherwise, will default to http://localhost:9200
 
 Sample output from esnodeshards -v:
 
-...Querying...        NORM  INIT RELOC
+   ...Querying...     NORM  INIT RELOC
        sysdata01-cor  1038            
        sysdata02-cor  1228           3
        sysdata03-cor  1038            
