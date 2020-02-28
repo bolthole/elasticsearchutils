@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# This outputs the default/templated settings for each index.
+# Things like shard count, copies.etc
+
 ESCLUSTER=${ESCLUSTER:-http://localhost:9200}
 
 curl $ESCLUSTER/_template?pretty
