@@ -1,0 +1,19 @@
+#!/bin/sh
+
+ESCLUSTER=${ESCLUSTER:-http://localhost:9200}
+
+clear
+while true; do
+
+tput cup 0 0
+
+echo "name            diskAvail ramCurrent cpu load master"
+
+# add the v option only to have it space the columns better
+curl -s $ESCLUSTER/_cat/nodes'?v&h=name,diskAvail,ramCurrent,cpu,l,master'|
+   sed '1d' | sort
+
+tput ed
+sleep 60
+
+done
