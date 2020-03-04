@@ -8,6 +8,7 @@ Set $ESCLUSTER in your environment to the URL you need to use.
 Otherwise, will default to http://localhost:9200
 
 * esgethealth - Display overall health of cluster. Much ligher/faster than esnodeshards
+* esgetnodes  - Display assorted details of each node, such as disk and cpu usage
 * esgetsettings - Dump ALL the cluster settings to stdout
 * esgettemplates - Get templated values for indexes
 * esmoveshard - Move ONE shard from one node to another. Mostly just a component of esmoveshards.
